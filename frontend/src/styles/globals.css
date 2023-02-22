@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Product Sans Regular';
+  src: url('/fonts/Product Sans Regular.ttf') format('truetype');
+}
