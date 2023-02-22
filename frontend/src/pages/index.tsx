@@ -3,6 +3,40 @@ import ParticipantButton from "@/components/ParticipantButton";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
+  let participantData = [
+    {
+      img: { src: "img/logo-seprog.png", alt: "Logo da byron" },
+      name: "byron.solutions",
+      content: "Conteúdo de HTML, CSS e Javascript",
+      longContent:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
+      social: { href: "instagram.com", name: "@byron.solutions" },
+    },
+    {
+      img: { src: "img/logo-seprog.png", alt: "Logo da byron" },
+      name: "byron.solutions",
+      content: "Conteúdo de HTML, CSS e Javascript",
+      longContent:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
+      social: { href: "instagram.com", name: "@byron.solutions" },
+    },
+    {
+      img: { src: "img/logo-seprog.png", alt: "Logo da byron" },
+      name: "byron.solutions",
+      content: "Conteúdo de HTML, CSS e Javascript",
+      longContent:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
+      social: { href: "instagram.com", name: "@byron.solutions" },
+    },
+    {
+      img: { src: "img/logo-seprog.png", alt: "Logo da byron" },
+      name: "byron.solutions",
+      content: "Conteúdo de HTML, CSS e Javascript",
+      longContent:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
+      social: { href: "instagram.com", name: "@byron.solutions" },
+    }
+  ];
   return (
     <>
       <section className="flex items-center justify-center py-12 bg-gradient-to-b from-blue-light to-blue-dark text-white">
@@ -66,32 +100,12 @@ const Home: NextPage = () => {
               <h2 className="font-bold text-4xl">Aprenda com os melhores</h2>
 
               <div className="grid grid-cols-2 gap-10">
-                <ParticipantButton
-                  imgUrl="img/logo-seprog.png"
-                  name="byron.solutions"
-                  content="Conteúdo de HTML, CSS e Javascript"
-                ></ParticipantButton>
-                <ParticipantButton
-                  imgUrl="img/logo-seprog.png"
-                  name="byron.solutions"
-                  content="Conteúdo de HTML, CSS e Javascript"
-                ></ParticipantButton>
-                <ParticipantButton
-                  imgUrl="img/logo-seprog.png"
-                  name="byron.solutions"
-                  content="Conteúdo de HTML, CSS e Javascript"
-                ></ParticipantButton>
-                <ParticipantButton
-                  imgUrl="img/logo-seprog.png"
-                  name="byron.solutions"
-                  content="Conteúdo de HTML, CSS e Javascript"
-                ></ParticipantButton>
+                {participantData.map((participant, key) => (
+                  <ParticipantButton key={key} data={participant}></ParticipantButton>
+                ))}
               </div>
             </div>
           </div>
-
-
-          
         </div>
       </section>
     </>
