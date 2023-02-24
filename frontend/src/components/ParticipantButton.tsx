@@ -19,7 +19,7 @@ const ParticipantButton = ({ data }: IProps) => {
   let [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <>
-      <div className="p-3 bg-blue-light rounded-2xl">
+      <div className="p-3 bg-blue-light rounded-2xl shadow hover:scale-105 transition-all">
         <div className="flex items-center p-4 gap-9 bg-white rounded-2xl">
           <picture>
             <img

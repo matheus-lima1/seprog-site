@@ -1,6 +1,7 @@
 import CallButton from "@/components/CallButton";
 import ParticipantButton from "@/components/ParticipantButton";
 import type { NextPage } from "next";
+import { Tab } from "@headlessui/react";
 
 const Home: NextPage = () => {
   let participantData = [
@@ -35,8 +36,51 @@ const Home: NextPage = () => {
       longContent:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
       social: { href: "instagram.com", name: "@byron.solutions" },
-    }
+    },
   ];
+
+  let tabsData = [
+    {
+      id: 1,
+      tab: {
+        day: "Segunda-feira (19/06)",
+        person: "Matheus.Lima",
+        description: "Conteúdo de programação web",
+      },
+      content: {
+        title: "Desenvolvimento de um portfólio pessoal",
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, explicabo?",
+      },
+    },
+    {
+      id: 2,
+      tab: {
+        day: "Terça-feira (20/06)",
+        person: "Matheus.Lima",
+        description: "Conteúdo de programação web",
+      },
+      content: {
+        title: "Desenvolvimento de um portfólio pessoal",
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum tenetur magnam sint placeat adipisci veniam maxime aut ipsa possimus quos?",
+      },
+    },
+    {
+      id: 3,
+      tab: {
+        day: "Quarta-feira (21/06)",
+        person: "Matheus.Lima",
+        description: "Conteúdo de programação web",
+      },
+      content: {
+        title: "Desenvolvimento de um portfólio pessoal",
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ipsa rerum minima veritatis. Labore animi obcaecati expedita quas libero cum eius, asperiores earum perferendis cupiditate",
+      },
+    },
+  ];
+
+  function classNames(...classes:string[]) {
+    return classes.filter(Boolean).join(' ')
+  }
   return (
     <>
       <section className="flex items-center justify-center py-12 bg-gradient-to-b from-blue-light to-blue-dark text-white">
@@ -101,11 +145,46 @@ const Home: NextPage = () => {
 
               <div className="grid grid-cols-2 gap-10">
                 {participantData.map((participant, key) => (
-                  <ParticipantButton key={key} data={participant}></ParticipantButton>
+                  <ParticipantButton
+                    key={key}
+                    data={participant}
+                  ></ParticipantButton>
                 ))}
               </div>
             </div>
           </div>
+          <div className="flex items-center">
+            <CallButton start></CallButton>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex items-center justify-center bg-gradient-to-b from-blue-dark to-blue-light text-white py-36">
+        <div className="flex flex-col items-center max-w-6xl w-full py-8">
+          <Tab.Group>
+            <div className="flex items-center rounded-t-3xl bg-gray shadow">
+              <Tab.List as="ul" className="flex flex-col gap-2 items-start">
+                {tabsData.map((tab) => (
+                  <Tab as="li" className={({selected}) => classNames("bg-blue-dark rounded-r-2xl first:rounded-tr-none last:rounded-bl-2xl last:rounded-br-none shadow-lg w-80", selected ? "bg-blue-light w-[360px]" : "")}>
+                    <button className="flex flex-col items-start text-xl gap-2 px-6 py-3 text-left">
+                      <h3 className="text-2xl font-bold">{tab.tab.day}</h3>
+                      <span className="font-semibold">{tab.tab.person}</span>
+                      <p className="font-light">{tab.tab.description}</p>
+                    </button>
+                  </Tab>
+                ))}
+              </Tab.List>
+
+              <Tab.Panels>
+                {tabsData.map((tab) => (
+                  <Tab.Panel className="bg-blue-light m-16 p-6 rounded-3xl">
+                    <p>{tab.content.title}</p>
+                    <p>{tab.content.text}</p>
+                  </Tab.Panel>
+                ))}
+              </Tab.Panels>
+            </div>
+          </Tab.Group>
         </div>
       </section>
     </>
