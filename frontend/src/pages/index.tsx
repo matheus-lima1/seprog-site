@@ -78,8 +78,8 @@ const Home: NextPage = () => {
     },
   ];
 
-  function classNames(...classes:string[]) {
-    return classes.filter(Boolean).join(' ')
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
   }
   return (
     <>
@@ -110,7 +110,7 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      <section className="flex items-center justify-center py-12 bg-blue-dark text-white">
+      <section id="sobre" className="flex items-center justify-center py-12 bg-blue-dark text-white">
         <div className="flex flex-col items-center max-w-6xl w-full py-8">
           <div className="flex items-center gap-24">
             <picture>
@@ -159,13 +159,21 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      <section className="flex items-center justify-center bg-gradient-to-b from-blue-dark to-blue-light text-white py-36">
+      <section id="programacao" className="flex items-center justify-center bg-gradient-to-b from-blue-dark to-blue-light text-white py-16 pb-24">
         <div className="flex flex-col items-center max-w-6xl w-full py-8">
           <Tab.Group>
             <div className="flex items-center rounded-t-3xl bg-gray shadow">
               <Tab.List as="ul" className="flex flex-col gap-2 items-start">
                 {tabsData.map((tab) => (
-                  <Tab as="li" className={({selected}) => classNames("bg-blue-dark rounded-r-2xl first:rounded-tr-none last:rounded-bl-2xl last:rounded-br-none shadow-lg w-80", selected ? "bg-blue-light w-[360px]" : "")}>
+                  <Tab
+                    as="li"
+                    className={({ selected }) =>
+                      classNames(
+                        "bg-blue-dark rounded-r-2xl first:rounded-tr-none last:rounded-bl-2xl last:rounded-br-none shadow-lg w-80",
+                        selected ? "bg-blue-light w-[360px]" : ""
+                      )
+                    }
+                  >
                     <button className="flex flex-col items-start text-xl gap-2 px-6 py-3 text-left">
                       <h3 className="text-2xl font-bold">{tab.tab.day}</h3>
                       <span className="font-semibold">{tab.tab.person}</span>
@@ -185,6 +193,42 @@ const Home: NextPage = () => {
               </Tab.Panels>
             </div>
           </Tab.Group>
+        </div>
+      </section>
+
+      <section id="organizadores" className="flex items-center justify-center bg-gradient-to-b from-blue-light to-blue-dark text-white py-16">
+        <div className="flex flex-col items-center max-w-6xl w-full py-8 gap-8">
+          <h2 className="text-4xl font-bold drop-shadow">
+            Localização do evento
+          </h2>
+
+
+            <iframe
+              className="w-full rounded-[48px] border-4 border-yellow shadow"
+              width="100%"
+              height="600"
+              frameBorder="0"
+              scrolling="no"
+              marginHeight={0}
+              marginWidth={0}
+              src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=-22.4129731,-%2045.44891969710001+(UNIFEI)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            >
+              <a href="https://www.maps.ie/distance-area-calculator.html">
+                measure area map
+              </a>
+            </iframe>
+
+          <picture>
+            <img className="w-20" src="img/icon-map.png" alt="ícone de mapa" />
+          </picture>
+
+          <span className="font-bold text-4xl">SEPROG</span>
+
+          <div className="flex flex-col items-center text-xl gap-4">
+            <span className="text-2xl font-semibold">Instituto de Matemática e Computação - UNIFEI</span>
+            <span>Avenida B P S, 1303 - Pinheirinho</span>
+            <span>Itajubá - MG</span>
+          </div>
         </div>
       </section>
     </>
