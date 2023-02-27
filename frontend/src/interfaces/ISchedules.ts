@@ -1,5 +1,3 @@
-import IEvents from "./IEvents";
-
 interface Attributes {
   dia: string;
   organizador: string;
@@ -7,32 +5,6 @@ interface Attributes {
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date;
-  imagem: Imagem;
-  events: IEvents[];
-}
-
-export interface Attributes2 {
-    name: string;
-    alternativeText?: any;
-    caption?: any;
-    width: number;
-    height: number;
-    formats?: any;
-    hash: string;
-    ext: string;
-    mime: string;
-    size: number;
-    url: string;
-    previewUrl?: any;
-    provider: string;
-    provider_metadata?: any;
-    createdAt: Date;
-    updatedAt: Date;
-}
-
-export interface Imagem {
-    id: number;
-    attributes: Attributes2;
 }
 
 interface Datum {

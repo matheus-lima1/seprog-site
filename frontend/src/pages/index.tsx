@@ -2,9 +2,20 @@ import CallButton from "@/components/CallButton";
 import ParticipantButton from "@/components/ParticipantButton";
 import type { NextPage } from "next";
 import { Tab } from "@headlessui/react";
+import axios from "axios";
+import axiosHeader from "@/api/axiosHeader";
+import {IHomepage, Attributes} from "@/interfaces/IHomepage";
+import IOrganizers from "@/interfaces/IOrganizers";
+import ISchedules from "@/interfaces/ISchedules";
 
-const Home: NextPage = () => {
 
+interface IProps{
+  homepage: IHomepage,
+  organizers: IOrganizers;
+  schedules: ISchedules;
+}
+
+const Home: NextPage<IProps> = ({homepage, organizers, schedules}: IProps) => {
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -16,13 +27,10 @@ const Home: NextPage = () => {
           <div className="flex flex-col gap-16 max-w-lg">
             <div className="flex flex-col gap-5">
               <h1 className="text-4xl font-bold drop-shadow">
-                II Semana de Programação
+                {homepage.data.attributes.primeiroTitulo}
               </h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse
-                maiores cumque voluptas obcaecati illo ratione quibusdam, iure
-                velit aspernatur dignissimos ullam odit incidunt numquam
-                corporis quidem vero sunt dolores itaque!
+                {homepage.data.attributes.heroDescription}
               </p>
             </div>
             <CallButton start></CallButton>
@@ -55,14 +63,11 @@ const Home: NextPage = () => {
               <h2 className="text-xl font-bold">Sobre a SEPROG:</h2>
 
               <p className="text-4xl font-bold drop-shadow">
-                Faça parte dessa evolução
+                {homepage.data.attributes.tituloSobre}
               </p>
 
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-                laborum culpa, eaque, odit consequatur ab veniam deserunt quas
-                cumque dolores ratione delectus reprehenderit illum eligendi
-                similique? Nam maxime voluptatem laborum?
+                {homepage.data.attributes.sobreDescricao}
               </p>
             </div>
           </div>
@@ -72,7 +77,7 @@ const Home: NextPage = () => {
               <h2 className="font-bold text-4xl">Aprenda com os melhores</h2>
 
               <div className="grid grid-cols-2 gap-10">
-                {participantData.map((participant, key) => (
+                {organizers.data.map((participant, key) => (
                   <ParticipantButton
                     key={key}
                     data={participant}
@@ -92,7 +97,7 @@ const Home: NextPage = () => {
           <Tab.Group>
             <div className="flex items-center rounded-t-3xl bg-gray shadow">
               <Tab.List as="ul" className="flex flex-col gap-2 items-start">
-                {tabsData.map((tab) => (
+                {schedules.data.map((tab) => (
                   <Tab
                     as="li"
                     className={({ selected }) =>
@@ -103,19 +108,19 @@ const Home: NextPage = () => {
                     }
                   >
                     <button className="flex flex-col items-start text-xl gap-2 px-6 py-3 text-left">
-                      <h3 className="text-2xl font-bold">{tab.tab.day}</h3>
-                      <span className="font-semibold">{tab.tab.person}</span>
-                      <p className="font-light">{tab.tab.description}</p>
+                      <h3 className="text-2xl font-bold">{tab.attributes.dia}</h3>
+                      <span className="font-semibold">{tab.attributes.organizador}</span>
+                      <p className="font-light">{tab.attributes.assunto}</p>
                     </button>
                   </Tab>
                 ))}
               </Tab.List>
 
               <Tab.Panels>
-                {tabsData.map((tab) => (
+                {schedules.data.map((tab) => (
                   <Tab.Panel className="bg-blue-light m-16 p-6 rounded-3xl">
-                    <p>{tab.content.title}</p>
-                    <p>{tab.content.text}</p>
+                    <p>{tab.attributes.organizador}</p>
+                    <p>{tab.attributes.assunto}</p>
                   </Tab.Panel>
                 ))}
               </Tab.Panels>
@@ -164,3 +169,28 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+
+  try {
+    const homepageResponse = await axiosHeader.get<IHomepage>('homepage?populate=*');
+
+    const promises = [];
+    // promises.push(axiosHeader.get<IHomepage>('homepage?populate=*'));
+    promises.push(axiosHeader.get<IOrganizers>('organizadores?populate=*'));
+    promises.push(axiosHeader.get<ISchedules>('schedules?populate=*'));
+
+    const [organizersResponse, schedulesResponse] = await Promise.all(promises);
+
+    const homepage = homepageResponse.data;
+    const organizers = organizersResponse.data;
+    const schedules = schedulesResponse.data;
+
+    return {
+      props: {homepage, organizers, schedules}, 
+    }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}

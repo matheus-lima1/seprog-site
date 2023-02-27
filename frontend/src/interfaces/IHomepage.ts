@@ -1,7 +1,7 @@
 import IOrganizers from "./IOrganizers";
 import ISchedules from "./ISchedules";
 
-interface Attributes {
+export interface Attributes {
   primeiroTitulo: string;
   heroDescription: string;
   tituloSobre: string;
@@ -19,7 +19,7 @@ interface Data {
 
 interface Meta {}
 
-export default interface IHomepage {
+export interface IHomepage {
   data: Data;
   meta: Meta;
 }

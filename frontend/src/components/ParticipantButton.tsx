@@ -1,18 +1,10 @@
+import {Datum} from "@/interfaces/IOrganizers";
 import { Dialog } from "@headlessui/react";
 import React from "react";
 import { useState } from "react";
 
 interface IProps {
-  data: {
-    content: string,
-    img: {src: string, alt: string},
-    longContent: string,
-    name: string,
-    social: {
-      href: string,
-      name: string
-    }
-  }
+  data: Datum
 }
 
 const ParticipantButton = ({ data }: IProps) => {
@@ -24,14 +16,14 @@ const ParticipantButton = ({ data }: IProps) => {
           <picture>
             <img
               className="rounded-xl border-2 border-blue-light w-16"
-              src={data.img.src}
-              alt={data.img.alt}
+              src={`http://127.0.0.1:1337${data.attributes.logo.data.attributes.url}`}
+              alt=""
             />
           </picture>
 
           <div className="flex flex-col items-start text-black">
-            <span className="font-bold">{data.name}</span>
-            <span>{data.content}</span>
+            <span className="font-bold">{data.attributes.titulo}</span>
+            <span>{data.attributes.subtitulo}</span>
           </div>
 
           <button
@@ -63,12 +55,12 @@ const ParticipantButton = ({ data }: IProps) => {
                 <picture>
                   <img
                     className="rounded-xl border-2 border-blue-light w-16"
-                    src={data.img.src}
-                    alt={data.img.alt}
+                    src={`http://127.0.0.1:1337${data.attributes.logo.data.attributes.url}`}
+                    alt=""
                   />
                 </picture>
 
-                <span className="font-bold text-4xl">{data.name}</span>
+                <span className="font-bold text-4xl">{data.attributes.titulo}</span>
 
                 <button
                   onClick={() => setIsOpen(false)}
@@ -83,9 +75,9 @@ const ParticipantButton = ({ data }: IProps) => {
                   </picture>
                 </button>
               </div>
-              <p className="text-lg">{data.content}</p>
-              <p>{data.longContent}</p>
-              <a className="self-center text-xl font-bold hover:underline" href={data.social.href}>{data.social.name}</a>
+              <p className="text-lg">{data.attributes.subtitulo}</p>
+              <p>{data.attributes.conteudo}</p>
+              <a className="self-center text-xl font-bold hover:underline" href={data.attributes.instagram}>{data.attributes.nomeInstagram}</a>
             </div>
           </Dialog.Panel>
         </div>
