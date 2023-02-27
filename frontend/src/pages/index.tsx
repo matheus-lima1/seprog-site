@@ -4,79 +4,7 @@ import type { NextPage } from "next";
 import { Tab } from "@headlessui/react";
 
 const Home: NextPage = () => {
-  let participantData = [
-    {
-      img: { src: "img/logo-seprog.png", alt: "Logo da byron" },
-      name: "byron.solutions",
-      content: "Conteúdo de HTML, CSS e Javascript",
-      longContent:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
-      social: { href: "instagram.com", name: "@byron.solutions" },
-    },
-    {
-      img: { src: "img/logo-seprog.png", alt: "Logo da byron" },
-      name: "byron.solutions",
-      content: "Conteúdo de HTML, CSS e Javascript",
-      longContent:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
-      social: { href: "instagram.com", name: "@byron.solutions" },
-    },
-    {
-      img: { src: "img/logo-seprog.png", alt: "Logo da byron" },
-      name: "byron.solutions",
-      content: "Conteúdo de HTML, CSS e Javascript",
-      longContent:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
-      social: { href: "instagram.com", name: "@byron.solutions" },
-    },
-    {
-      img: { src: "img/logo-seprog.png", alt: "Logo da byron" },
-      name: "byron.solutions",
-      content: "Conteúdo de HTML, CSS e Javascript",
-      longContent:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur animi sunt, sapiente modi eum omnis quo ducimus rerum iusto. Deleniti soluta ex enim cumque neque ipsum necessitatibus non praesentium!",
-      social: { href: "instagram.com", name: "@byron.solutions" },
-    },
-  ];
 
-  let tabsData = [
-    {
-      id: 1,
-      tab: {
-        day: "Segunda-feira (19/06)",
-        person: "Matheus.Lima",
-        description: "Conteúdo de programação web",
-      },
-      content: {
-        title: "Desenvolvimento de um portfólio pessoal",
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, explicabo?",
-      },
-    },
-    {
-      id: 2,
-      tab: {
-        day: "Terça-feira (20/06)",
-        person: "Matheus.Lima",
-        description: "Conteúdo de programação web",
-      },
-      content: {
-        title: "Desenvolvimento de um portfólio pessoal",
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum tenetur magnam sint placeat adipisci veniam maxime aut ipsa possimus quos?",
-      },
-    },
-    {
-      id: 3,
-      tab: {
-        day: "Quarta-feira (21/06)",
-        person: "Matheus.Lima",
-        description: "Conteúdo de programação web",
-      },
-      content: {
-        title: "Desenvolvimento de um portfólio pessoal",
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ipsa rerum minima veritatis. Labore animi obcaecati expedita quas libero cum eius, asperiores earum perferendis cupiditate",
-      },
-    },
-  ];
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");

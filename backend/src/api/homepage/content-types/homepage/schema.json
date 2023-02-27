@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "homapages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homapages",
+    "displayName": "Página Inicial"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "primeiroTitulo": {
+      "type": "string",
+      "required": true
+    },
+    "heroDescription": {
+      "type": "text"
+    },
+    "tituloSobre": {
+      "type": "string",
+      "required": true
+    },
+    "sobreDescricao": {
+      "type": "text",
+      "required": true
+    },
+    "organizers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::organizadore.organizadore"
+    },
+    "schedules": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::schedule.schedule"
+    }
+  }
+}

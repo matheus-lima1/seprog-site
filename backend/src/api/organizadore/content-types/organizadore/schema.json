@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organizadores",
+  "info": {
+    "singularName": "organizadore",
+    "pluralName": "organizadores",
+    "displayName": "Organizadores"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "subtitulo": {
+      "type": "string",
+      "required": true
+    },
+    "conteudo": {
+      "type": "text",
+      "required": true
+    },
+    "instagram": {
+      "type": "string",
+      "required": true
+    },
+    "nomeInstagram": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
