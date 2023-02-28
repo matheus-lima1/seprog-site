@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <footer className="flex flex-col items-center justify-center bg-blue-dark text-white">
       <div className="flex flex-col items-center w-full max-w-6xl">
-        <div className="flex items-center gap-36 p-6">
+        <div className="flex items-center gap-36 p-6 lg:block">
           {/* Coluna da byron e IMC */}
-          <div className="flex flex-col items-center w-52">
+          <div className="flex flex-col items-center w-52 lg:w-full py-12">
             <picture>
               <img src="img/unifei.png" alt="Logo da UNIFEI" />
             </picture>
@@ -17,7 +17,7 @@ const Footer = () => {
           </div>
 
           {/* Coluna do logo da SEPROG */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center lg:hidden">
             <picture>
               <img src="img/logo-seprog.png" alt="Logo da SEPROG" />
             </picture>

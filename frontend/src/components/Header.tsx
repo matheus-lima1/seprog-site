@@ -3,10 +3,10 @@ import React from "react";
 const Header = () => {
   return (
     <header className="flex items-center justify-center h-20 bg-blue-dark ">
-      <div className="flex items-center justify-between w-full max-w-6xl">
+      <div className="flex items-center justify-between w-full max-w-6xl sm:justify-center md:justify-center lg:justify-center">
         <picture>
           <img
-            className="w-20 drop-shadow"
+            className="w-20 drop-shadow sm:mr-16 md:mr-16 lg:mr-16"
             src="img/logo-seprog.png"
             alt="Logo da Seprog"
           />
